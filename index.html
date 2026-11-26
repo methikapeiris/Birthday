@@ -1,0 +1,1433 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Favourite Person</title>
+
+<!-- Elegant fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ==============================
+   1. BASIC SETTINGS
+================================ */
+
+:root {
+    --cream: #f7f3ed;
+    --cream-dark: #eee7dc;
+    --white: #fffdf9;
+    --black: #25231f;
+    --grey: #77716a;
+    --gold: #b49a70;
+    --rose: #a86c70;
+    --border: rgba(50, 40, 30, 0.13);
+
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'DM Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--black);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+}
+
+body.locked {
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* ==============================
+   2. OPENING SCREEN
+================================ */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    background: var(--cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 25px;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.intro.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-content {
+    max-width: 600px;
+    animation: fadeUp 1.5s ease;
+}
+
+.intro-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+
+.intro h1 {
+    font-family: var(--serif);
+    font-size: clamp(55px, 10vw, 100px);
+    font-weight: 400;
+    line-height: 0.95;
+}
+
+.intro h1 em {
+    color: var(--rose);
+    font-weight: 400;
+}
+
+.intro-text {
+    margin-top: 25px;
+    font-size: 13px;
+    color: var(--grey);
+    letter-spacing: 1px;
+    line-height: 2;
+}
+
+.enter-btn {
+    margin-top: 40px;
+    padding: 16px 38px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--black);
+
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    transition: all 0.4s;
+}
+
+.enter-btn:hover {
+    background: var(--black);
+    color: var(--cream);
+    border-color: var(--black);
+}
+
+.intro-heart {
+    color: var(--rose);
+    margin-top: 35px;
+    font-size: 18px;
+}
+
+/* ==============================
+   3. NAVIGATION
+================================ */
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 7%;
+    z-index: 20;
+}
+
+.logo {
+    font-family: var(--serif);
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-link {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--rose);
+}
+
+.music-btn {
+    border: 1px solid var(--border);
+    background: transparent;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.music-btn:hover {
+    background: var(--black);
+    color: white;
+}
+
+/* ==============================
+   4. HERO SECTION
+================================ */
+
+.hero {
+    min-height: 100vh;
+    padding: 130px 7% 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.hero-container {
+    width: 100%;
+    max-width: 1250px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.hero-text {
+    padding: 30px 0;
+    animation: fadeUp 1.5s ease;
+}
+
+.eyebrow {
+    color: var(--gold);
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.hero h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(55px, 7vw, 95px);
+    line-height: 0.95;
+}
+
+.hero h2 em {
+    color: var(--rose);
+}
+
+.hero-description {
+    margin-top: 30px;
+    color: var(--grey);
+    font-size: 13px;
+    line-height: 2;
+    max-width: 400px;
+}
+
+.hero-buttons {
+    margin-top: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.primary-btn {
+    padding: 15px 30px;
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+
+    transition: all 0.4s;
+}
+
+.primary-btn:hover {
+    background: transparent;
+    color: var(--black);
+}
+
+.secondary-btn {
+    padding: 15px 30px;
+    background: transparent;
+    border: 1px solid var(--border);
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+}
+
+.secondary-btn:hover {
+    border-color: var(--gold);
+}
+
+.hero-image-wrap {
+    position: relative;
+    max-width: 530px;
+    margin-left: auto;
+    animation: fadeUp 1.8s ease;
+}
+
+.hero-image {
+    height: min(70vh, 650px);
+    min-height: 430px;
+    background: var(--cream-dark);
+}
+
+.hero-image img {
+    height: 100%;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: -20px;
+    left: -35px;
+
+    background: var(--white);
+    padding: 20px 30px;
+
+    font-family: var(--serif);
+    font-size: 20px;
+    font-style: italic;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+}
+
+.hero-side-note {
+    position: absolute;
+    right: 25px;
+    bottom: 50px;
+
+    writing-mode: vertical-rl;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+/* ==============================
+   5. SECTION COMMON STYLES
+================================ */
+
+section:not(.hero) {
+    padding: 110px 7%;
+}
+
+.section-inner {
+    max-width: 1150px;
+    margin: auto;
+}
+
+.section-title {
+    font-family: var(--serif);
+    font-size: clamp(45px, 6vw, 75px);
+    font-weight: 400;
+    text-align: center;
+    line-height: 1;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--grey);
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.line {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    margin: 30px auto;
+}
+
+/* ==============================
+   6. OUR STORY
+================================ */
+
+.story {
+    background: var(--white);
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.story-image {
+    height: 550px;
+    position: relative;
+}
+
+.story-image img {
+    height: 100%;
+}
+
+.story-image::after {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(255,255,255,0.6);
+    pointer-events: none;
+}
+
+.story-content h3 {
+    font-family: var(--serif);
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.story-content h3 em {
+    color: var(--rose);
+}
+
+.story-content p {
+    font-size: 13px;
+    line-height: 2.2;
+    color: var(--grey);
+    margin-top: 25px;
+}
+
+.story-date {
+    font-family: var(--serif);
+    font-size: 23px;
+    color: var(--gold);
+    margin-top: 30px;
+    font-style: italic;
+}
+
+/* ==============================
+   7. MEMORIES GALLERY
+================================ */
+
+.memories {
+    background: var(--cream);
+}
+
+.gallery {
+    margin-top: 65px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--cream-dark);
+}
+
+.gallery-item:nth-child(2) {
+    margin-top: 45px;
+}
+
+.gallery-item:nth-child(5) {
+    margin-top: 45px;
+}
+
+.gallery-item img {
+    height: 390px;
+    transition: transform 0.8s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+}
+
+.gallery-caption {
+    background: var(--white);
+    padding: 20px;
+    font-family: var(--serif);
+    font-size: 23px;
+    font-style: italic;
+    text-align: center;
+}
+
+/* ==============================
+   8. LOVE LETTER
+================================ */
+
+.letter-section {
+    background: #eee7dc;
+    text-align: center;
+}
+
+.letter-card {
+    max-width: 850px;
+    margin: 65px auto 0;
+
+    padding: 70px 60px;
+    background: var(--white);
+
+    border: 1px solid rgba(180,154,112,0.35);
+    position: relative;
+
+    box-shadow: 0 20px 70px rgba(50,40,30,0.04);
+}
+
+.letter-card::before {
+    content: "✦";
+    color: var(--gold);
+    font-size: 20px;
+
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.letter-card h3 {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.letter-card p {
+    font-size: 13px;
+    line-height: 2.1;
+    color: var(--grey);
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.letter-btn {
+    margin-top: 35px;
+    padding: 17px 40px;
+
+    border: 1px solid var(--gold);
+    background: transparent;
+
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    transition: all 0.4s;
+}
+
+.letter-btn:hover {
+    background: var(--black);
+    color: white;
+}
+
+/* ==============================
+   9. LETTER MODAL
+================================ */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+
+    background: rgba(30,25,20,0.7);
+    backdrop-filter: blur(8px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--cream);
+    max-width: 750px;
+    width: 100%;
+    max-height: 85vh;
+
+    overflow-y: auto;
+    padding: 60px 55px;
+
+    position: relative;
+    transform: translateY(30px);
+    transition: transform 0.5s;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    color: var(--grey);
+}
+
+.letter-text {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+.letter-text .signature {
+    display: block;
+    margin-top: 30px;
+    color: var(--rose);
+    font-style: italic;
+    font-size: 30px;
+}
+
+/* ==============================
+   10. FINAL SECTION
+================================ */
+
+.final-section {
+    background: var(--black);
+    color: var(--cream);
+    text-align: center;
+}
+
+.final-section .eyebrow {
+    color: var(--gold);
+}
+
+.final-section h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(50px, 8vw, 95px);
+    line-height: 1;
+}
+
+.final-section h2 em {
+    color: #d5b9b1;
+}
+
+.final-message {
+    max-width: 500px;
+    margin: 30px auto;
+
+    font-size: 13px;
+    line-height: 2;
+    color: #b9b2a8;
+}
+
+.final-heart {
+    margin-top: 45px;
+    font-size: 22px;
+    color: #c48b8d;
+    animation: heartbeat 2s infinite;
+}
+
+footer {
+    padding: 25px;
+    background: var(--black);
+    color: #8e877f;
+    text-align: center;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ==============================
+   11. ANIMATIONS
+================================ */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Reveal elements while scrolling */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==============================
+   12. MOBILE RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 850px) {
+
+    nav {
+        padding: 20px 6%;
+    }
+
+    .nav-right {
+        gap: 15px;
+    }
+
+    .nav-link {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .hero {
+        padding: 120px 6% 80px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image-wrap {
+        margin: auto;
+        width: 85%;
+    }
+
+    .hero-image {
+        height: 500px;
+    }
+
+    .hero-side-note {
+        display: none;
+    }
+
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .story-image {
+        height: 450px;
+        max-width: 500px;
+        margin: auto;
+        width: 100%;
+    }
+
+    .story-content {
+        text-align: center;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(5) {
+        margin-top: 0;
+    }
+
+    .gallery-item img {
+        height: 300px;
+    }
+
+    .letter-card {
+        padding: 60px 30px;
+    }
+
+    .modal-content {
+        padding: 55px 30px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .intro h1 {
+        font-size: 65px;
+    }
+
+    .hero h2 {
+        font-size: 65px;
+    }
+
+    .hero-image {
+        min-height: 350px;
+        height: 430px;
+    }
+
+    .image-caption {
+        left: -10px;
+        font-size: 17px;
+        padding: 15px 20px;
+    }
+
+    section:not(.hero) {
+        padding: 80px 6%;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery-item img {
+        height: 230px;
+    }
+
+    .gallery-caption {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .letter-card h3 {
+        font-size: 34px;
+    }
+
+    .letter-text {
+        font-size: 19px;
+    }
+
+    .nav-link {
+        display: none;
+    }
+
+    .story-image {
+        height: 380px;
+    }
+}
+</style>
+</head>
+
+<body class="locked">
+
+<!-- ==============================
+     OPENING SCREEN
+================================ -->
+
+<div class="intro" id="intro">
+
+    <div class="intro-content">
+
+        <p class="intro-label">A little something for you</p>
+
+        <h1>For my<br>
+            <em>favourite person.</em>
+        </h1>
+
+        <p class="intro-text">
+            Made with love, just for you.<br>
+            Take your time, beautiful.
+        </p>
+
+        <button class="enter-btn" onclick="enterWebsite()">
+            Open your surprise
+        </button>
+
+        <div class="intro-heart">♡</div>
+
+    </div>
+
+</div>
+
+<!-- ==============================
+     NAVIGATION
+================================ -->
+
+<nav>
+
+    <div class="logo">M & ♡</div>
+
+    <div class="nav-right">
+
+        <a href="#story" class="nav-link">Our Story</a>
+        <a href="#memories" class="nav-link">Memories</a>
+        <a href="#letter" class="nav-link">Your Letter</a>
+
+        <button class="music-btn" id="musicBtn"
+                onclick="toggleMusic()"
+                title="Play music">
+            ♫
+        </button>
+
+    </div>
+
+</nav>
+
+<!-- ==============================
+     HERO
+================================ -->
+
+<section class="hero" id="home">
+
+    <div class="hero-container">
+
+        <div class="hero-text">
+
+            <p class="eyebrow">Happy Birthday, My Love</p>
+
+            <h2>
+                To the girl<br>
+                who makes my<br>
+                <em>world beautiful.</em>
+            </h2>
+
+            <p class="hero-description">
+                Today is all about you. Your smile, your dreams,
+                your beautiful heart, and every little thing
+                that makes you the person I fell in love with.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#letter" class="primary-btn">
+                    A letter for you
+                </a>
+
+                <a href="#memories" class="secondary-btn">
+                    Our memories
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-image-wrap">
+
+            <div class="hero-image">
+                <img src="photos/main.jpg"
+                     alt="Our favourite photograph"
+                     onerror="this.style.display='none'">
+            </div>
+
+            <div class="image-caption">
+                My favourite view. ♡
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-side-note">
+        Made with love, always
+    </div>
+
+</section>
+
+<!-- ==============================
+     OUR STORY
+================================ -->
+
+<section class="story" id="story">
+
+    <div class="section-inner">
+
+        <div class="reveal">
+
+            <p class="eyebrow" style="text-align:center">
+                A year of us
+            </p>
+
+            <h2 class="section-title">
+                One year.<br>
+                <em>Countless memories.</em>
+            </h2>
+
+            <p class="section-subtitle">
+                And I'd choose you all over again.
+            </p>
+
+            <div class="line"></div>
+
+        </div>
+
+        <div class="story-grid reveal">
+
+            <div class="story-image">
+                <img src="photos/story.jpg"
+                     alt="A special memory"
+                     onerror="this.style.display='none'">
+            </div>
+
+            <div class="story-content">
+
+                <h3>
+                    Somehow,<br>
+                    you became my<br>
+                    <em>favourite everything.</em>
+                </h3>
+
+                <p>
+                    It's crazy how one person can become such a
+                    big part of your life. One year ago, we began
+                    our little journey, and since then you've
+                    become someone I think about in the most
+                    random moments of my day.
+                </p>
+
+                <p>
+                    The conversations, the laughter, the little
+                    things, the memories and even the moments
+                    when we miss each other. Every part of this
+                    journey means something to me.
+                </p>
+
+                <p>
+                    And if I could go back to the beginning,
+                    knowing everything I know now, I'd still
+                    choose you.
+                </p>
+
+                <div class="story-date">
+                    One year of loving you ♡
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     MEMORIES GALLERY
+================================ -->
+
+<section class="memories" id="memories">
+
+    <div class="section-inner">
+
+        <div class="reveal">
+
+            <p class="eyebrow" style="text-align:center">
+                Little moments, forever
+            </p>
+
+            <h2 class="section-title">
+                Our little <em>world.</em>
+            </h2>
+
+            <p class="section-subtitle">
+                Some of my favourite memories of us.
+            </p>
+
+            <div class="line"></div>
+
+        </div>
+
+        <div class="gallery reveal">
+
+            <div class="gallery-item">
+                <img src="photos/1.jpg" alt="Memory one">
+                <div class="gallery-caption">A little moment</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="photos/2.jpg" alt="Memory two">
+                <div class="gallery-caption">My favourite smile</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="photos/3.jpg" alt="Memory three">
+                <div class="gallery-caption">You & me</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="photos/4.jpg" alt="Memory four">
+                <div class="gallery-caption">A memory to keep</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="photos/5.jpg" alt="Memory five">
+                <div class="gallery-caption">My happiness</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="photos/6.jpg" alt="Memory six">
+                <div class="gallery-caption">Always us</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     LETTER SECTION
+================================ -->
+
+<section class="letter-section" id="letter">
+
+    <div class="section-inner reveal">
+
+        <p class="eyebrow">Something I've been wanting to say</p>
+
+        <h2 class="section-title">
+            Words from<br>
+            <em>my heart.</em>
+        </h2>
+
+        <div class="line"></div>
+
+        <div class="letter-card">
+
+            <h3>To my babaaa ♡</h3>
+
+            <p>
+                There's so much I want to tell you, and I don't
+                think a simple birthday wish could ever be enough.
+                So I wrote something just for you.
+            </p>
+
+            <button class="letter-btn" onclick="openLetter()">
+                Read your letter
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     LETTER POPUP
+================================ -->
+
+<div class="modal" id="letterModal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeLetter()">
+            ×
+        </button>
+
+        <p class="eyebrow" style="text-align:center">
+            Happy birthday, my love
+        </p>
+
+        <h2 class="section-title" style="font-size:45px">
+            To my <em>princess.</em>
+        </h2>
+
+        <div class="line"></div>
+
+        <div class="letter-text" id="letterText">
+
+Happy birthday to my babaaa, my favourite girl, my princess, and the most special person in my life. ❤️
+
+I honestly don't even know where to start because there's so much I want to say to you, and I don't think a single message could ever explain how much you mean to me. But today is your day, and I really want you to know just how loved you are, not just today but every single day.
+
+It's crazy to think that we've been together for a whole year now. One whole year of us, of getting to know each other more and more, of all our conversations, our little moments, our laughs, our random arguments, our silly things, and all the memories we've made. When I think about how much you've become a part of my life, I genuinely can't explain it.
+
+Whenever something happens, you're one of the first people I want to tell. When something makes me laugh, I wish I could share it with you. When I'm having a bad day, talking to you somehow makes things feel a little better.
+
+I don't think you fully understand how special you are to me. It's not just because you're pretty, although I could honestly spend forever telling you how beautiful you are. It's the way you are, your personality, your little habits, the way you talk, the way you laugh, the way you get excited about things, even the little things you do that you probably don't even notice. I love all those things about you.
+
+I love having you in my life. I love being able to call you mine. I love knowing that somewhere in this world, there's a girl who means so much to me, and no matter how far apart we are, she's still someone who holds such a big place in my heart.
+
+I know being apart isn't always easy. Sometimes I genuinely wish I could just be next to you, hold your hand, hug you when you're having a bad day, annoy you in person, take you out, and spend the most random days together doing absolutely nothing.
+
+Especially on days like your birthday, I wish I could be there with you properly. I wish I could see your face when you wake up, give you the biggest hug, make you smile, and make you feel like the birthday girl you deserve to be.
+
+But even though I can't physically be there, I hope this little something reminds you that my love for you isn't limited by distance.
+
+I'm so proud of you, baba. I'm proud of the person you are and the person you're becoming. I know there are days when things feel stressful, when you overthink, when you doubt yourself, or when you feel like you're not doing enough.
+
+But I hope you never forget how capable, talented, beautiful, and special you are. You deserve happiness, peace, success, love, and every beautiful thing life has to offer.
+
+And I hope that whenever you feel like you're not enough, you remember that to me, you're someone incredibly precious. You don't have to be perfect. You don't have to have everything figured out. You don't have to pretend to be okay all the time.
+
+You can be yourself with me. Your happy self, your sad self, your tired self, your overthinking self, your silly self, all of it. I want to be someone you can talk to, someone you can trust, someone who listens, and someone who makes you feel safe and loved.
+
+This past year with you has given me so many memories that I wouldn't trade for anything. And honestly, I don't just love the memories we've already made. I'm excited about all the memories we haven't made yet.
+
+All the places we'll hopefully go, all the pictures we'll take, all the birthdays we'll celebrate, all the little moments we'll laugh about years later, and all the times we'll look back and realise how far we've come.
+
+I want more of us. More conversations that last way longer than they should, more random calls, more laughter, more stupid jokes, more teasing, more little surprises, more moments where we just forget about everything else for a while.
+
+I want to keep learning about you, even the things I already know, because somehow I never get tired of you.
+
+Thank you for being in my life. Thank you for all the love you've given me, for the time you've spent with me, for the memories, for the laughs, and for being you.
+
+Thank you for making this past year something so special to me. I hope I've made you feel loved too, because you deserve so much love, and I hope I can continue giving you more of it as time goes on.
+
+If I could wish for anything today, it would be for you to be genuinely happy. I wish for all your dreams to come true, for you to achieve everything you've been working towards, for you to find peace on the difficult days, and for you to always have people around you who appreciate the beautiful person you are.
+
+And selfishly, I hope I get to be part of so many of those happy moments.
+
+Happy birthday again, my babaaa. I hope this year is kinder to you, brighter for you, and filled with beautiful things. I hope you smile so much that your cheeks hurt, laugh until you can't breathe, and feel loved in ways you never have to question.
+
+One year down, and hopefully so many more to go. I love you more than I can put into words, and even this ridiculously long message still doesn't feel like enough to explain it.
+
+I love you, princess. Happy birthday to my favourite person in the whole world. ❤️
+
+Always yours. ♡
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==============================
+     FINAL SECTION
+================================ -->
+
+<section class="final-section">
+
+    <div class="section-inner reveal">
+
+        <p class="eyebrow">And one last thing</p>
+
+        <h2>
+            I would still<br>
+            <em>choose you.</em>
+        </h2>
+
+        <p class="final-message">
+            In every lifetime, every version of this world,
+            and every possible story, I hope I somehow
+            find my way back to you.
+            <br><br>
+            Thank you for being my favourite chapter.
+            This is only the beginning of our story.
+        </p>
+
+        <div class="final-heart">♡</div>
+
+    </div>
+
+</section>
+
+<footer>
+    Made with love, for you. &nbsp; ♡ &nbsp; Always.
+</footer>
+
+<!-- ==============================
+     MUSIC
+================================ -->
+
+<audio id="backgroundMusic" loop>
+    <source src="music/song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ==============================
+     JAVASCRIPT
+================================ -->
+
+<script>
+
+/* ==============================
+   ENTER WEBSITE
+================================ */
+
+function enterWebsite() {
+
+    const intro = document.getElementById("intro");
+
+    intro.classList.add("hide");
+
+    document.body.classList.remove("locked");
+
+    // Attempt to start music after user clicks
+    const music = document.getElementById("backgroundMusic");
+
+    music.play().then(() => {
+        document.getElementById("musicBtn").innerHTML = "♫";
+    }).catch(() => {
+        // If music doesn't play, she can use the music button
+    });
+
+}
+
+/* ==============================
+   MUSIC BUTTON
+================================ */
+
+function toggleMusic() {
+
+    const music = document.getElementById("backgroundMusic");
+    const button = document.getElementById("musicBtn");
+
+    if (music.paused) {
+
+        music.play().then(() => {
+            button.innerHTML = "♫";
+        }).catch(() => {
+            alert("Please add your music file inside the music folder.");
+        });
+
+    } else {
+
+        music.pause();
+        button.innerHTML = "♪";
+
+    }
+
+}
+
+/* ==============================
+   LETTER POPUP
+================================ */
+
+function openLetter() {
+
+    document.getElementById("letterModal").classList.add("active");
+
+    document.body.classList.add("locked");
+
+}
+
+function closeLetter() {
+
+    document.getElementById("letterModal").classList.remove("active");
+
+    document.body.classList.remove("locked");
+
+}
+
+// Close popup if clicking outside the letter
+document.getElementById("letterModal").addEventListener("click", function(event) {
+
+    if (event.target === this) {
+        closeLetter();
+    }
+
+});
+
+// Close popup using Escape key
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeLetter();
+    }
+
+});
+
+/* ==============================
+   SCROLL ANIMATIONS
+================================ */
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+/* ==============================
+   SMOOTH NAVIGATION
+================================ */
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+    link.addEventListener("click", function(event) {
+
+        const target = document.querySelector(this.getAttribute("href"));
+
+        if (target) {
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
